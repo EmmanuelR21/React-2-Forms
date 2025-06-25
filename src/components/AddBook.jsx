@@ -16,14 +16,17 @@ import React, { useState} from "react";
 const AddBook = () => { //states
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
+  const [rating, setRating] = useState("");
+  const [releaseDate, setReleaseDate] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const newBook = {
       title: title,
       author: author,
-      ratings: [],
-      "release date": ""
+      ratings: [parseFloat(rating)],
+      "release date": releaseDate
     };
     handleAddBook(newBook);
   };
@@ -41,6 +44,25 @@ const AddBook = () => { //states
         <label>Author:</label>
         <input value={author} onChange={(e) => setAuthor(e.target.value)} />
       </div>
+      <div>
+        <label>Rating (1–5):</label>
+        <input
+          value={rating}
+          onChange={(e) => setRating(e.target.value)}
+          type="number"
+          step="0.1"
+        />
+      </div>
+      <div>
+        <label>Release Date:</label>
+        <input
+          value={releaseDate}
+          onChange={(e) => setReleaseDate(e.target.value)}
+          type="text"
+          placeholder="YYYY-MM-DD"
+        />
+      </div>
+
 
       <button type="submit">Add Book</button>
     </form>

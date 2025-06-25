@@ -7,6 +7,7 @@
 
 body {
   background-color: #160f29;
+  color: #160f29;
 }
 
 .title {
@@ -40,3 +41,7 @@ body {
 .gif-card img {
   width: 100%;
 }
+input {
+  color: black !important;
+}
+

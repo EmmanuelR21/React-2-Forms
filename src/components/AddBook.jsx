@@ -13,14 +13,28 @@ import React, { useState} from "react";
  * - isFavorite (boolean, default false)
  */
 
-const AddBook = () => { //states
+const AddBook = ( { handleAddBook}) => { //states
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [rating, setRating] = useState("");
   const [releaseDate, setReleaseDate] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    //add validation
+
+  if (!title.trim() || !author.trim() || !rating.trim()) {
+  setError("Title, author, and rating are required.");
+  return;
+}
+
+const numericRating = parseFloat(rating);
+if (isNaN(numericRating) || numericRating < 1 || numericRating > 5) {
+  setError("Rating must be a number between 1 and 5.");
+  return;
+}
+
 
     const newBook = {
       title: title,
@@ -29,7 +43,13 @@ const AddBook = () => { //states
       "release date": releaseDate
     };
     handleAddBook(newBook);
+  setTitle("");
+    setAuthor("");
+    setRating("");
+    setReleaseDate("");
+    setError("");
   };
+  
 
   return (
     <form onSubmit={handleSubmit}>
@@ -63,6 +83,7 @@ const AddBook = () => { //states
         />
       </div>
 
+      {error && <p style={{ color: "red" }}>{error}</p>}
 
       <button type="submit">Add Book</button>
     </form>

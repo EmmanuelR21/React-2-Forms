@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState} from "react";
 
 /**
  * A book should have the following fields:
@@ -13,8 +13,38 @@ import React from "react";
  * - isFavorite (boolean, default false)
  */
 
-const AddBook = () => {
-  return <div>AddBook</div>;
+const AddBook = () => { //states
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newBook = {
+      title: title,
+      author: author,
+      ratings: [],
+      "release date": ""
+    };
+    handleAddBook(newBook);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <h2>Add a Book</h2>
+
+      <div>
+        <label>Title:</label>
+        <input value={title} onChange={(e) => setTitle(e.target.value)} />
+      </div>
+
+      <div>
+        <label>Author:</label>
+        <input value={author} onChange={(e) => setAuthor(e.target.value)} />
+      </div>
+
+      <button type="submit">Add Book</button>
+    </form>
+  );
 };
 
 export default AddBook;

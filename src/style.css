@@ -25,7 +25,7 @@ body {
   min-height: 100vh;
 }
 
-.app * {
+.app {
   color: #ffffff;
 }
 
@@ -39,4 +39,8 @@ body {
 
 .gif-card img {
   width: 100%;
+}
+
+.buttom{
+  color: black;
 }

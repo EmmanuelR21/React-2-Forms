@@ -85,7 +85,7 @@ if (isNaN(numericRating) || numericRating < 1 || numericRating > 5) {
 
       {error && <p style={{ color: "red" }}>{error}</p>}
 
-      <button type="submit">Add Book</button>
+      <button type="submit" className="black-text">Add Book</button>
     </form>
   );
 };

@@ -3,7 +3,6 @@ import BookCard from "./BookCard";
 
 const BookList = ({ books }) => {
   const [searchedBook, setSearchedBook] = useState([]);
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const titleInput = event.target[0].value;

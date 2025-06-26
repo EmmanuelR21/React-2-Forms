@@ -19,12 +19,18 @@ const App = () => {
       releaseDate: "November 2025",
     },
   ]);
+  const handleAddBook = (newBook) => {
+    setBooks([...books, newBook]);
+  };
 
   return (
     <div className="app">
       <h1 className="title">React Forms! 📝</h1>
-      <AddBook />
+      <AddBook handleAddBook={handleAddBook} />
       <BookList books={books} />
+      <div>
+        <button></button>
+      </div>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 
 /**
  * A book should have the following fields:
@@ -13,7 +13,8 @@ import React, { useState} from "react";
  * - isFavorite (boolean, default false)
  */
 
-const AddBook = ( { handleAddBook}) => { //states
+const AddBook = ({ handleAddBook }) => {
+  //states
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [rating, setRating] = useState("");
@@ -24,32 +25,30 @@ const AddBook = ( { handleAddBook}) => { //states
     e.preventDefault();
     //add validation
 
-  if (!title.trim() || !author.trim() || !rating.trim()) {
-  setError("Title, author, and rating are required.");
-  return;
-}
+    if (!title.trim() || !author.trim() || !rating.trim()) {
+      setError("Title, author, and rating are required.");
+      return;
+    }
 
-const numericRating = parseFloat(rating);
-if (isNaN(numericRating) || numericRating < 1 || numericRating > 5) {
-  setError("Rating must be a number between 1 and 5.");
-  return;
-}
-
+    const numericRating = parseFloat(rating);
+    if (isNaN(numericRating) || numericRating < 1 || numericRating > 5) {
+      setError("Rating must be a number between 1 and 5.");
+      return;
+    }
 
     const newBook = {
       title: title,
       author: author,
       ratings: [parseFloat(rating)],
-      "release date": releaseDate
+      releaseDate: releaseDate,
     };
     handleAddBook(newBook);
-  setTitle("");
+    setTitle("");
     setAuthor("");
     setRating("");
     setReleaseDate("");
     setError("");
   };
-  
 
   return (
     <form onSubmit={handleSubmit}>
@@ -85,7 +84,9 @@ if (isNaN(numericRating) || numericRating < 1 || numericRating > 5) {
 
       {error && <p style={{ color: "red" }}>{error}</p>}
 
-      <button type="submit" className="black-text">Add Book</button>
+      <button type="submit" className="black-text">
+        Add Book
+      </button>
     </form>
   );
 };
